@@ -1,23 +1,521 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "40평 아파트 인테리어 비용은 평균적으로 얼마인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "40평 인테리어 비용은 공사 범위(전체 또는 부분), 마감재 등급, 업체 역량, 지역별 인건비 등에 따라 크게 달라집니다. 일반적으로 평당 100만 원~200만 원 선으로 예상할 수 있으며, 전체 리모델링 시 4,000만 원에서 8,000만 원 이상까지 폭넓은 예산이 필요합니다. 견적 비교 시 평균 가격을 기준으로 삼아 정확한 맞춤 견적을 확인하는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "40평 인테리어 시공 기간은 얼마나 걸리나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "40평 규모의 아파트 전체 리모델링은 일반적으로 4주(한 달)에서 6주 정도 소요됩니다. 부분 공사의 경우 1~2주 내에 완료될 수 있으며, 주방/욕실/바닥 등 핵심 부분만 진행할 경우 2~3주 정도가 필요합니다. 공사 범위와 자재 수급 상황에 따라 기간은 변동될 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "40평 아파트 인테리어 업체 선정 시 어떤 점을 확인해야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "업체 선정 시에는 사업자등록증 및 건설업 면허 보유 여부, 시공 경험(포트폴리오), 견적서의 세부 항목 투명성, A/S 보장 여부(특히 하자보수 기간 명시), 고객 후기 등을 종합적으로 검토해야 합니다. 특히 40평대 인테리어는 공사 규모가 크므로 전문성과 신뢰성이 중요합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #3B5F4C; /* Deep Greenish Blue */
+      --secondary-color: #5D8C77; /* Soft Green */
+      --accent-color: #ADC8B9; /* Pale Green/Gray */
+      --highlight-color: #EBF2ED; /* Very light background for sections */
+      --text-color: #2D3E50; /* Dark Blue Text */
+      --bg-light: #F0F4F8; /* Light blue/gray background */
+      --bg-white: #ffffff;
+      --btn-color: #D69C5C; /* Earthy Orange/Brown */
+      --btn-hover: #C58B4E;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7; /* Increased for better readability */
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:700;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight:700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    .hero p {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2em;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+    }
+    .compare-form-box input, .compare-form-box select, .compare-form-box textarea {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+    }
+
+    .content-section {
+      margin-top: 40px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--secondary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+    }
+    .content-section h3 {
+      font-size:1.6em;
+      color: var(--primary-color);
+      margin-top:30px;
+      margin-bottom:15px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px;
+      padding:20px;
+      background-color: var(--highlight-color);
+      border-radius:8px;
+      text-align:center;
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+    }
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:10px;
+      color:#555;
+      font-size:1.1em;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 1em;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: var(--highlight-color);
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+      th, td { padding: 10px; font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">40평 아파트 인테리어</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>40평 아파트 인테리어 견적 비교 및 추천</h1>
+        <p>40평대 아파트 리모델링, 비용부터 디자인 트렌드까지 2026년 최신 가이드로 완벽하게 준비하세요.</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 인테리어 견적 1:1 상담 신청</h2>
+          <p>간단한 정보 입력으로 40평 인테리어 전문가의 무료 견적과 컨설팅을 받아보세요.</p>
+          <form action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="고객님의 성함을 입력해주세요." required>
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력해주세요." required>
+            <label for="area">주소지 (시/군/구)</label>
+            <select id="area" name="area" required>
+                <option value="" disabled selected>거주 지역을 선택하세요</option>
+                <option value="서울">서울</option>
+                <option value="경기">경기</option>
+                <option value="인천">인천</option>
+                <option value="부산">부산</option>
+                <option value="대구">대구</option>
+                <option value="광주">광주</option>
+                <option value="대전">대전</option>
+                <option value="울산">울산</option>
+                <option value="세종">세종</option>
+                <option value="강원">강원</option>
+                <option value="충북">충북</option>
+                <option value="충남">충남</option>
+                <option value="전북">전북</option>
+                <option value="전남">전남</option>
+                <option value="경북">경북</option>
+                <option value="경남">경남</option>
+                <option value="제주">제주</option>
+            </select>
+            <label for="budget">예상 예산 범위</label>
+            <select id="budget" name="budget" required>
+                <option value="" disabled selected>예산 범위를 선택하세요</option>
+                <option value="3000만원 미만">3000만원 미만 (부분 리모델링)</option>
+                <option value="3000만원~5000만원">3000만원~5000만원 (합리적 전체 리모델링)</option>
+                <option value="5000만원~8000만원">5000만원~8000만원 (고급 마감재 포함)</option>
+                <option value="8000만원 이상">8000만원 이상 (프리미엄 전체 리모델링)</option>
+            </select>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>40평 인테리어 성공을 위한 핵심 가이드</h2>
+        <p>40평대 아파트는 넓은 공간을 효율적으로 활용하는 것이 핵심입니다. 단순히 예쁘게 꾸미는 것을 넘어 생활 편의성과 수납 공간 확보가 중요합니다. 2026년 인테리어 트렌드에 맞춰 비용 대비 만족도를 높일 수 있는 노하우를 소개합니다.</p>
+
+        <div class="feature-grid">
+          <div class="item">
+            <img src="https://via.placeholder.com/80/3B5F4C/fff?text=COST" alt="비용 분석 아이콘">
+            <h3>비용 분석 및 견적 비교</h3>
+            <p>부분 공사와 전체 공사의 차이점, 합리적인 예산 책정 방법을 상세히 분석하여 불필요한 지출을 막아줍니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/3B5F4C/fff?text=DESIGN" alt="디자인 트렌드 아이콘">
+            <h3>2026년 최신 트렌드 제안</h3>
+            <p>와이드 리빙룸, 스마트 홈 시스템, 친환경 마감재 등 40평에 적합한 최신 디자인 방향을 제시합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/3B5F4C/fff?text=PRO" alt="전문 시공 아이콘">
+            <h3>전문 업체 매칭 서비스</h3>
+            <p>검증된 포트폴리오를 보유한 전문 인테리어 업체와 고객님을 연결하여 시공 품질을 보장합니다.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+        <ul class="keyword-list">
+          <li>#40평인테리어비용</li>
+          <li>#40평아파트리모델링</li>
+          <li>#40평주방인테리어</li>
+          <li>#40평거실인테리어</li>
+          <li>#인테리어견적비교</li>
+          <li>#40평인테리어업체추천</li>
+          <li>#40평인테리어장단점</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>40평 아파트 인테리어 비용: 평균 견적과 항목별 분석</h2>
+        <p>40평 아파트 인테리어는 공사 범위에 따라 비용 차이가 매우 큽니다. 평당 가격을 기준으로 평균적인 금액을 산출할 수는 있지만, 마감재 등급, 철거 범위, 확장 여부 등 변수에 따라 최종 금액이 달라집니다. 2026년 기준 40평대 아파트 인테리어의 평균적인 비용 산출 기준을 안내합니다.</p>
+
+        <h3>1. 40평 인테리어 비용의 구성 요소</h3>
+        <p>인테리어 비용은 크게 마감재(자재비), 인건비, 부가 비용(철거, 폐기물 처리, 관리비, 디자인비)으로 나뉩니다. 40평대는 자재 사용량이 많고, 전문 인력이 투입되는 기간이 길어 비용이 높습니다. 특히 샷시 교체나 구조 변경이 포함될 경우 비용이 급격히 증가합니다.</p>
+
+        <h3>2. 2026년 40평 인테리어 평균 견적 비교표</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>항목 구분</th>
+                    <th>표준 예산 (만원)</th>
+                    <th>고급 예산 (만원)</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>공사 범위</td>
+                    <td>부분 리모델링 (샷시 제외)</td>
+                    <td>전체 리모델링 (샷시 포함)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>평균 평당 단가</td>
+                    <td>80만 원 ~ 120만 원</td>
+                    <td>150만 원 ~ 250만 원</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>예상 총액 (40평 기준)</td>
+                    <td>3,200만 원 ~ 4,800만 원</td>
+                    <td>6,000만 원 ~ 1억 원 이상</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>참고:</strong> 위 표는 40평 인테리어 평균 예상 금액이며, 정확한 내돈내산 견적은 현장 실측을 통해 받아보시는 것이 중요합니다.</p>
+
+        <h3>3. 지역별 인테리어 비용 차이: 서울 vs 지방</h3>
+        <p>40평대 아파트 인테리어 비용은 지역별 인건비 차이에 영향을 받습니다. 서울, 특히 강남, 서초, 송파 등 고가 지역은 인테리어 업체 경쟁이 치열하지만, 인건비와 자재 물류비가 높아 평균적으로 비용이 비쌉니다. 반면 대구, 부산, 광주 등 지방 광역시는 상대적으로 인건비가 낮아 저렴한곳을 찾기 쉽습니다. 하지만 40평 아파트 인테리어의 경우 자재비 비중이 크므로, 지역별 차이는 전체 비용의 10~20% 내외로 발생합니다.</p>
+
+        <h3>4. 인테리어 비용 절약 팁: 현명하게 싼곳 찾기</h3>
+        <p>40평 인테리어 비용을 절약하고 싶다면 다음 팁을 활용하세요.</p>
+        <ul>
+            <li><strong>철거 최소화:</strong> 철거는 비용이 많이 드는 작업입니다. 기존 가구, 샷시 등 재활용 가능하거나 상태가 좋은 항목은 그대로 사용합니다.</li>
+            <li><strong>비수기 활용:</strong> 이사 비수기인 1월~2월, 7월~8월에는 업체 일정이 여유로워 비용 할인을 받을 확률이 높습니다.</li>
+            <li><strong>마감재 선택:</strong> 바닥재나 벽지 등 면적이 넓은 부분에 저렴한 표준 자재를 사용하고, 주방 상판이나 욕실 타일 등 포인트 부분에만 고급 자재를 적용합니다.</li>
+            <li><strong>직거래 견적 비교:</strong> 여러 40평 인테리어 전문 업체로부터 비교 견적을 받아 불필요한 거품을 제거합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>40평 인테리어 디자인 트렌드 (2026년 기준)</h2>
+        <p>2026년 40평대 아파트 인테리어는 '개방성'과 '수납력'이 핵심 키워드입니다. 넓은 공간을 더욱 넓어 보이게 하고, 가족 구성원의 라이프스타일을 반영한 맞춤형 공간 설계가 중요합니다.</p>
+
+        <h3>1. 거실: 와이드 리빙룸과 미니멀리즘</h3>
+        <p>40평 아파트는 거실을 넓게 확장하여(확장공사) 와이드 리빙룸을 선호합니다. 소파와 TV 배치를 최소화하고, 거실 한쪽 벽면을 매립형 TV나 수납장으로 깔끔하게 마감합니다. 특히 40평대 거실은 넉넉한 공간감을 위해 밝은 색상(화이트, 베이지)을 기본으로 하며, 층고를 높아 보이게 하는 간접 조명을 활용합니다.</p>
+
+        <h3>2. 주방: 대형 아일랜드와 히든 수납</h3>
+        <p>40평 주방 인테리어는 대면형 주방이 대세입니다. 넓은 아일랜드 식탁을 중심으로 가족이 소통할 수 있는 구조를 만듭니다. 수납공간 부족 문제를 해결하기 위해 팬트리룸(식료품 보관실)을 만들거나, 벽면을 전체 붙박이장으로 구성하는 히든 수납 방식이 인기를 끌고 있습니다. 주방 조명은 기능성 조명과 디자인 조명을 혼합하여 사용합니다.</p>
+
+        <h3>3. 침실 및 드레스룸: 호텔식 구성</h3>
+        <p>40평대 아파트 침실은 호텔처럼 꾸미는 것이 트렌드입니다. 붙박이장 대신 넓은 드레스룸 공간을 별도로 마련하여 침실을 휴식 공간으로만 활용합니다. 화장대와 수납 기능을 통합한 파우더룸을 드레스룸 내부에 배치하는 방식도 선호됩니다.</p>
+        <p><strong>40평 아파트 인테리어 장점:</strong> 공간 활용도가 높고, 다양한 디자인 컨셉 적용이 가능함. 수납 공간이 넉넉하여 정리 정돈이 용이함.</p>
+        <p><strong>40평 아파트 인테리어 단점:</strong> 공사 범위가 넓어 비용 부담이 크며, 시공 기간이 길어짐. 유지보수 비용도 상대적으로 높을 수 있음.</p>
+
+        <h3>4. 40평대 인테리어 시공 프로세스: A to Z</h3>
+        <p>성공적인 인테리어는 체계적인 프로세스에서 시작됩니다. 40평 아파트 인테리어는 다음과 같은 단계를 거쳐 진행됩니다.</p>
+        <ol>
+            <li><strong>상담 및 견적 요청:</strong> 고객의 요구사항과 예산, 라이프스타일을 전문가와 상담합니다.</li>
+            <li><strong>현장 실측 및 디자인 제안:</strong> 전문가가 아파트를 직접 방문하여 현장 상황을 파악하고 맞춤형 디자인을 제안합니다.</li>
+            <li><strong>계약 및 자재 선택:</strong> 최종 견적을 확정하고 계약서에 서명합니다. 마감재와 가구 등을 결정합니다.</li>
+            <li><strong>시공 및 감리:</strong> 철거, 설비, 목공, 도배, 마루, 주방, 욕실 순으로 공사가 진행됩니다.</li>
+            <li><strong>준공 및 A/S:</strong> 공사 완료 후 하자 여부를 확인하고, 사후 관리를 약속합니다.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>지역별 40평 인테리어 업체 순위 및 추천 기준</h2>
+        <p>40평대 인테리어는 공사 규모가 크므로 신뢰할 수 있는 업체를 선정하는 것이 중요합니다. 단순히 저렴한곳을 찾는 것보다, 투명한 견적과 풍부한 시공 경험을 가진 업체를 선택해야 합니다. 업체 순위는 플랫폼 내 고객 만족도와 시공 후기를 기준으로 결정됩니다.</p>
+
+        <h3>1. 지역별 인테리어 전문 업체 비교</h3>
+        <p>다음은 전국 주요 지역별 40평 인테리어 업체 선정 시 고려해야 할 사항입니다. 지역 특성상 인건비 및 자재 운반비가 다르므로, 해당 지역에 특화된 업체를 찾는 것이 유리합니다.</p>
+        <ul>
+            <li><strong>서울/경기 (강남, 분당, 일산, 수원, 용인):</strong> 고급 마감재 시공 경험이 풍부하고, 최신 디자인 트렌드를 반영할 수 있는 업체가 많습니다.</li>
+            <li><strong>부산/대구 (해운대, 수성구):</strong> 대규모 아파트 단지 리모델링 경험이 많은 업체를 중심으로 비교합니다.</li>
+            <li><strong>인천/광주/대전:</strong> 합리적인 비용과 높은 가성비를 제공하는 업체를 선호하는 경향이 있습니다.</li>
+        </ul>
+
+        <h3>2. 40평 인테리어 업체 선정 시 체크리스트</h3>
+        <ul>
+            <li><strong>시공 경험:</strong> 40평 아파트 시공 포트폴리오를 반드시 확인하여, 우리 집과 유사한 규모의 시공 경험이 있는지 검증합니다.</li>
+            <li><strong>정식 사업자:</strong> 인테리어 공사업 면허를 갖춘 정식 업체인지 확인합니다.</li>
+            <li><strong>A/S 보장:</strong> 계약서에 하자보수 기간(1년 이상)이 명시되어 있는지 확인합니다. 내돈내산 후기에서도 A/S 만족도를 확인하는 것이 좋습니다.</li>
+            <li><strong>견적 투명성:</strong> 인건비, 자재비, 부가세 등이 명확하게 구분된 상세 견적서를 제공하는지 확인합니다.</li>
+        </ul>
+
+        <h3>3. 40평 인테리어 후기: 내돈내산 팁</h3>
+        <p>40평 인테리어를 진행한 고객들의 내돈내산 후기를 분석해 보면, 가장 만족도가 높은 부분은 '수납 공간'과 '주방 공간'입니다. 특히 40평대 아파트는 짐의 양이 많으므로 수납장 설계가 매우 중요하며, 주방은 대형 아일랜드를 통해 활용도를 높인 경우가 많습니다. 후기에서는 '시공 전 충분한 소통', '견적서 외 추가 비용 발생 여부' 등을 중점적으로 확인해야 합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+
+            <div class="faq-item">
+                <h3>40평 인테리어 시공 기간은 얼마나 걸리나요?</h3>
+                <p>전체 리모델링의 경우 샷시 교체 여부와 공사 범위에 따라 최소 4주에서 6주 정도가 소요됩니다. 부분 공사의 경우 2주 내외로 단축될 수 있습니다. 특히 40평은 공사 범위가 넓으므로, 사전에 정확한 공정표를 확인하고 이사 일정을 조율해야 합니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>아파트 인테리어 시공 시 꼭 필요한 행정 절차가 있나요?</h3>
+                <p>네, 있습니다. 아파트 관리사무소에 리모델링 공사 신고를 해야 하며, 40평대 아파트의 경우 '소음 공사 동의서'를 징구해야 합니다. 특히 내력벽 철거와 같은 구조 변경 공사는 관할 구청의 허가 사항이므로 전문가와 충분히 상의해야 합니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>인테리어 계약 시 주의할 점은 무엇인가요?</h3>
+                <p>견적서에 명시된 공사 범위와 마감재 사양을 꼼꼼히 확인해야 합니다. 특히 추가 비용이 발생할 수 있는 '철거', '설비', '전기 증설' 부분에 대한 명확한 기준을 계약서에 포함해야 합니다. 하자보수 기간과 범위도 반드시 명시되어야 합니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>40평 인테리어에서 샷시 교체는 필수인가요?</h3>
+                <p>필수 사항은 아니지만, 20년 이상 된 아파트라면 샷시 교체를 강력히 추천합니다. 샷시는 단열과 방음에 핵심적인 역할을 하며, 40평대 아파트의 경우 샷시 면적이 넓어 냉난방 효율에 큰 영향을 미칩니다. 샷시 교체 여부에 따라 인테리어 비용 차이가 크므로, 샷시를 포함한 견적과 제외한 견적을 모두 비교해 보세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <ul>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EA%B1%B4%EC%B6%95%EB%B2%95" target="_blank" rel="noopener">법제처: 건축법 시행령 (인테리어 및 리모델링 관련 법령)</a></li>
+          <li><a href="https://www.kca.go.kr/index.do" target="_blank" rel="noopener">한국소비자원 (인테리어 관련 소비자 피해 구제 및 분쟁 해결 정보)</a></li>
+          <li><a href="https://www.molit.go.kr/portal/main.do" target="_blank" rel="noopener">국토교통부 (아파트 리모델링 제도 및 정책 정보)</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4_%EB%94%94%EC%9E%90%EC%9D%B8" target="_blank" rel="noopener">위키백과: 인테리어 디자인</a></li>
+          <li><a href="https://www.consumer.go.kr/consumer/disputeresolution/disputeresolution02.do" target="_blank" rel="noopener">공정거래위원회: 소비자분쟁해결기준 (인테리어 공사 관련 기준)</a></li>
+        </ul>
+        <p>위 자료들은 40평 인테리어 계약 시 법적 기준, 소비자 권리 보호, 분쟁 해결 등에 유용한 정보입니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+
+  
